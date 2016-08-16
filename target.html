@@ -1,0 +1,11 @@
+<meta charset="UTF-8">
+<script>
+
+var a1 = 80,a2 = 60, b1 = 40, b2 = 30;
+var a = parseInt(a);
+alert("Добро пожаловать!");
+var a = prompt("Введите угол обстрела: ");
+if (isNaN(a)||a<0||a>90) {alert("Введите число от 0 до 90 ");}
+else if (a<a1&&a>a2||a<b1&&a>b2) {alert("Вы попали в мишень");}
+else {alert("Вы промахнулись((")}
+</script>

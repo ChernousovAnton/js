@@ -1,0 +1,26 @@
+<meta charset="ulf-8">
+<script>
+var arr = [];
+var rounds = 100;
+var i = 0;
+var loy = [-1,0,1];
+var pm = 0;
+var red = 0;
+for(i = 0; i < rounds; i++){
+pm = Math.round(Math.random()*2);
+arr.push(loy[pm]);
+}
+alert(arr);
+pm = 0;
+for (i = 0; i < arr.length; i++){
+do{
+pm++;
+i++;
+}while(arr[i]==0);
+if (red < pm){
+red = pm;
+}
+pm = 0;
+}
+alert("Максимальная длинна последовательности красного : " + red);
+</script>
