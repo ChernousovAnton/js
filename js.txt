@@ -39,3 +39,6 @@ if (выражение) {
 команда_1;
 команда_2;
 }
+
+
+http://www.webremeslo.ru/html/glava2.html - html book
