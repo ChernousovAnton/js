@@ -1,0 +1,21 @@
+<meta charset="utf-8">
+<script type="text/javascript">
+	alert('Конвертер валют. Программа хранит в переменных курс доллара и евро. Пользователь вводит сумму в рублях и получает информацию о том, сколько эта сумма составляет в долларах и евро.');
+	var Rub_Sum = +prompt("Введите сумму в рублях: ");
+	var Dollar_exchange_rate = 30; // Курс доллара
+	var EURO_exchange_rate = 40; // Курс евро
+	
+	// функция подсчета валюты
+	function getCurrancy (exchange_rate) {
+		return Math.floor( Rub_Sum / exchange_rate); 
+	}
+
+	// функция подсчета монет
+	function getCoin (exchange_rate) {
+		return Math.floor( (Rub_Sum / exchange_rate - getCurrancy (exchange_rate)) * 100);
+	}
+
+	alert (Rub_Sum + ' RUB = ' + getCurrancy(Dollar_exchange_rate) + ' USD ' + getCoin(Dollar_exchange_rate) + ' Cent \n' + 
+			Rub_Sum + ' RUB = ' + getCurrancy(EURO_exchange_rate) + ' EURO ' + getCoin(EURO_exchange_rate) + ' EURO Cent');
+
+</script>

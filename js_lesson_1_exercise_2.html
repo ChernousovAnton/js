@@ -1,0 +1,40 @@
+<!-- Игра в загадки.
+a. Загадать загадку. Если ответ верен – поздравить пользователя. Затем сообщить, что
+игра окончена.
+b. Если ответ неверный – написать пользователю, что он не угадал.
+c. Добавить еще 3 загадки. Подсчитать количество правильных ответов, сообщить
+пользователю. -->
+
+
+<meta charset="utf-8">
+<script type="text/javascript">
+alert('Игра в загадки.');
+var correctAnswer = 0;
+
+var answer = prompt ('Зимой и летом одним цветом?');
+if (answer == 'елка' || answer == 'Елка' || answer == 'ёлка' || answer == 'Ёлка') {
+	alert('Молодец, правильно!'); correctAnswer++;
+} else {alert ('Не угадал ((');}
+
+var answer = prompt ('Без рук, без ног, а ходить умеют?');
+if (answer == 'часы' || answer == 'Часы') {
+	alert('Молодец, правильно!'); correctAnswer++;
+} else {alert ('Не угадал ((');}
+
+var answer = prompt ('Сидит дед, во сто шуб одет. Тот кто его раздевает, слезы проливает?');
+if (answer == 'лук' || answer == 'Лук') {
+	alert('Молодец, правильно!'); correctAnswer++;
+} else {alert ('Не угадал ((');}
+
+var answer = prompt ('Крашенное коромысло через реку повисло.');
+if (answer == 'радуга' || answer == 'Радуга') {
+	alert('Молодец, правильно!'); correctAnswer++;
+} else {alert ('Не угадал ((');}
+
+if(correctAnswer == 1) {
+	alert(correctAnswer + ' правильный ответ!');
+} else {
+	alert(correctAnswer + ' правильных ответа!');
+}
+
+</script>

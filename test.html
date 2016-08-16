@@ -1,0 +1,32 @@
+'<meta charset="utf-8">
+<script type="text/javascript">
+
+var array = ['A','A','K'];
+
+function getSum (arr) {
+	var sum = 0;
+	// Вычисляем сумму без учета туз(ов)
+	for (var i = 0; i < arr.length; i++) {
+		if (arr[i] != 'A') { 
+		if (arr[i] == 'J' || arr[i] == 'Q' || arr[i] == 'K') {
+			sum = sum + 10;
+		} else {sum = sum + parseInt(arr[i]);}
+		}
+		
+	}
+	alert(sum);
+	// Если сумма стало больше чем 10, то туз =1 в противном случае 11
+	for (var i = 0; i < arr.length; i++)  {
+		if (arr[i] =='A') { 
+			if (sum > 10 ) {
+				sum = sum +1;
+			} else {
+				sum = sum + 11;
+			}
+		} 
+	}
+	return sum
+}
+
+alert (getSum(array));
+</script>'
