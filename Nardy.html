@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="utf-8">
+	<title>Угадай число</title>
+		<style>
+		body
+		{
+		font-size: xx-large;
+		color: #0e635b;
+		background-color: #b2eff7;
+		text-align: justify;
+		}
+		strong
+		{
+		color:#1909f9;
+		font-size: xx-large;
+		}
+		tab50px
+		{
+		font-size: xx-large;
+		color: #0e635b;
+		background-color: #b2eff7;
+		text-align: justify;
+		margin-left: 100px;
+		}
+		</style>
+	</head>
+		<body>
+				<script>
+				var min=1;
+				var max=6;
+				var tryCount = 0;
+				var sumUser1 = 0;
+				var sumUser2 = 0;
+				var user1name = prompt("Введите имя первого игрока: ");
+				var user2name = prompt("Введите имя втоого игрока: ");
+				document.write("<strong><center>Каждый участник набрал количество очков приведенное ниже: </strong></center><br><br>"+user1name+"&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp" + user2name +"<br>")
+				do { 
+				var guessNumber1 = Math.floor( Math.random() * (max - min + 1)) + min;
+				var guessNumber2 = Math.floor( Math.random() * (max - min + 1)) + min;
+				var guessNumber3 = Math.floor( Math.random() * (max - min + 1)) + min;
+				var guessNumber4 = Math.floor( Math.random() * (max - min + 1)) + min;
+				tryCount += 1
+
+					var stepUser1 = prompt(user1name + ", Ваш ход. Попытка номер " + tryCount + "\n" + guessNumber1 + " " + guessNumber2);
+					if (guessNumber1 == guessNumber2 ) {
+						sumUser1 = sumUser1 + 4*guessNumber1;
+					} else {sumUser1 = sumUser1 + guessNumber1 + guessNumber2;
+					}
+					
+					document.write(tryCount + ".&nbsp&nbsp"+ guessNumber1 + " " + guessNumber2 + "&nbsp&nbsp&nbsp" + sumUser1);
+					if (stepUser1 == 'stop') {
+						break;
+					}
+					
+					var stepUser2 = prompt(user2name + ", Ваш ход. Попытка номер " + tryCount + "\n" + guessNumber3 + " " + guessNumber4);
+					if (guessNumber3 == guessNumber4 ) {
+						sumUser2 = sumUser2 + 4*guessNumber3;
+					} else {sumUser2 = sumUser2 + guessNumber3 + guessNumber4;}
+
+					document.write("<tab50px>" + guessNumber3 + " " + guessNumber4 + "&nbsp&nbsp&nbsp" + sumUser2 + "</tab50px>" + "<br>");
+										
+					if (stepUser2 == 'stop') {
+						break;
+					} 
+					
+
+				}
+				while (true);
+				alert (sumUser1 + " " + sumUser2);
+				</script>
+
+		</body>
+</html>
