@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="utf-8">
+	<title>Угадай число</title>
+		<style>
+		body
+		{
+		font­size: 20px;
+		color:brown;
+		}
+		b
+		{
+		color:crimson;
+		}
+		strong
+		{
+		color:coral;
+		}
+		</style>
+	</head>
+		<body>
+			<script>
+			var min=1;
+			var max=100;
+			// Загадываем случайное число
+			var guessNumber=Math.floor( Math.random() * (max - min + 1)) + min;
+			document.write("Компьютер загадал число "+ guessNumber +".");
+			// Номер попытки
+			var tryCount=0;
+			var user1Answer;
+			var user2Answer;
+			var user1name = prompt("Введите имя первого игрока: ");
+			var user2name = prompt("Введите имя втоого игрока: ");
+				for (var i = 0; i < 7; i++) {
+					
+				
+				// Увеличиваем количество попыток на единицу
+				tryCount=tryCount+1;
+				user1Answer=+prompt( user1name + ", Ваша попытка номер: " + tryCount + " :");
+				if (user1Answer>guessNumber) {
+					alert("Перелет.");
+				} else if (user1Answer<guessNumber) {
+					alert("Недолет.");
+				} else if (user1Answer == guessNumber) {
+					alert("Брависимо!!! " + user1name + ", угадал!"); break;
+				}
+				user2Answer=+prompt( user2name + ", Ваша попытка номер: " + tryCount + " :");
+				if (user2Answer>guessNumber) {
+					alert("Перелет.");
+				} else if (user2Answer<guessNumber) {
+				alert("Недолет.");
+				} else if (user2Answer == guessNumber) {
+					alert("Брависимо!!! " + user2name + ", угадал!"); break;
+				}
+
+
+
+				}
+
+				alert('Игра окончена!');
+				
+			</script>
+		</body>
+</html>
