@@ -6,16 +6,15 @@
 		<style>
 		body
 		{
-		font­size: 20px;
-		color:brown;
-		}
-		b
-		{
-		color:crimson;
+		font-size: xx-large;
+		color: #0e635b;
+		background-color: #b2eff7;
+		text-align: center;
 		}
 		strong
 		{
-		color:coral;
+		color:#1909f9;
+		font-size: xx-large;
 		}
 		</style>
 	</head>
@@ -25,14 +24,14 @@
 			var max=100;
 			// Загадываем случайное число
 			var guessNumber=Math.floor( Math.random() * (max - min + 1)) + min;
-			document.write("Компьютер загадал число "+ guessNumber +".");
+			document.write("Компьютер загадал число "+ guessNumber +".<br><br>");
 			// Номер попытки
 			var tryCount=0;
 			var user1Answer;
 			var user2Answer;
 			var user1name = prompt("Введите имя первого игрока: ");
 			var user2name = prompt("Введите имя втоого игрока: ");
-				for (var i = 0; i < 7; i++) {
+				for (var i = 0; i < 2; i++) {
 					
 				
 				// Увеличиваем количество попыток на единицу
@@ -46,6 +45,7 @@
 					alert("Брависимо!!! " + user1name + ", угадал!"); break;
 				}
 				user2Answer=+prompt( user2name + ", Ваша попытка номер: " + tryCount + " :");
+				document.write("Попытка №: " + tryCount + ". " + "<strong>" + user1name + "</strong>" + " загадал: " + user1Answer + "\u0009 &nbsp;&nbsp;&nbsp;    " + "<strong>" + user2name + "</strong>" + " загадал: " + user2Answer + "<br>");
 				if (user2Answer>guessNumber) {
 					alert("Перелет.");
 				} else if (user2Answer<guessNumber) {
