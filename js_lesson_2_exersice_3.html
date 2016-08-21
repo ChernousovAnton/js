@@ -24,37 +24,33 @@
 			var max=100;
 			// Загадываем случайное число
 			var guessNumber=Math.floor( Math.random() * (max - min + 1)) + min;
+			alert("Компьютер загада число от " + min + " до " + max + ". Попробуй его угадать.")
 			document.write("Компьютер загадал число "+ guessNumber +".<br><br>");
-			// Номер попытки
-			var tryCount=0;
-			var user1Answer;
-			var user2Answer;
+			var tryCount=0; // Номер попытки
 			var user1name = prompt("Введите имя первого игрока: ");
 			var user2name = prompt("Введите имя втоого игрока: ");
 				for (var i = 0; i < 5; i++) {
-					
-				
 				// Увеличиваем количество попыток на единицу
 				tryCount=tryCount+1;
+
 				user1Answer=+prompt( user1name + ", Ваша попытка номер: " + tryCount + " :");
-				if (user1Answer>guessNumber) {
-					alert("Перелет.");
-				} else if (user1Answer<guessNumber) {
-					alert("Недолет.");
-				} else if (user1Answer == guessNumber) {
-					alert("Брависимо!!! " + user1name + ", угадал!"); break;
-				}
+					if (user1Answer>guessNumber) {
+						alert("Перелет.");
+					} else if (user1Answer<guessNumber) {
+						alert("Недолет.");
+					} else if (user1Answer == guessNumber) {
+						alert("Брависимо!!! " + user1name + ", угадал!"); break;
+					}
+
 				user2Answer=+prompt( user2name + ", Ваша попытка номер: " + tryCount + " :");
 				document.write("Попытка №: " + tryCount + ". " + "<strong>" + user1name + "</strong>" + " загадал: " + user1Answer + "\u0009 &nbsp;&nbsp;&nbsp;    " + "<strong>" + user2name + "</strong>" + " загадал: " + user2Answer + "<br>");
-				if (user2Answer>guessNumber) {
-					alert("Перелет.");
-				} else if (user2Answer<guessNumber) {
-				alert("Недолет.");
-				} else if (user2Answer == guessNumber) {
-					alert("Брависимо!!! " + user2name + ", угадал!"); break;
-				}
-
-
+					if (user2Answer>guessNumber) {
+						alert("Перелет.");
+					} else if (user2Answer<guessNumber) {
+					alert("Недолет.");
+					} else if (user2Answer == guessNumber) {
+						alert("Брависимо!!! " + user2name + ", угадал!"); break;
+					}
 
 				}
 
