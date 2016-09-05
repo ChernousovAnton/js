@@ -1,0 +1,86 @@
+<meta charset="utf-8">
+<script type="text/javascript">
+	var cells = [	
+				{name:253728512,	lat:55.722672,	lon:37.641922,	rsi:492},
+{name:253728768,	lat:55.720463,	lon:37.600479,	rsi:329},
+{name:253730304,	lat:55.672573,	lon:37.609116,	rsi:570},
+{name:253733120,	lat:55.704931,	lon:37.597364,	rsi:513},
+{name:253734400,	lat:55.653538,	lon:37.644554,	rsi:77},
+{name:253735168,	lat:55.629093,	lon:37.660374,	rsi:275},
+{name:253736192,	lat:55.67585,	lon:37.506058,	rsi:727},
+{name:253737472,	lat:55.645526,	lon:37.625329,	rsi:464},
+{name:253737728,	lat:55.646016,	lon:37.546077,	rsi:406},
+{name:253737984,	lat:55.651386,	lon:37.50713,	rsi:543},
+{name:253738496,	lat:55.731091,	lon:37.580887,	rsi:749},
+{name:253739776,	lat:55.737248,	lon:37.635641,	rsi:717},
+{name:253743872,	lat:55.677849,	lon:37.757462,	rsi:738},
+{name:253744384,	lat:55.609604,	lon:37.699165,	rsi:694},
+{name:253744640,	lat:55.602066,	lon:37.669739,	rsi:292},
+{name:253685760,	lat:55.719795,	lon:37.627216,	rsi:807},
+{name:253687808,	lat:55.743267,	lon:37.61438,	rsi:145},
+{name:253688576,	lat:55.708855,	lon:37.506092,	rsi:294}
+	];
+	//определение объекта для которого нужно рассчитать новые RSI
+	var cellFound = {name: "6", lat:55.1928, lon: 37.07, rsi: 0};
+
+	// расчет дистанции от искомой соты ко всем остальным
+	
+	for (var i=0; i< cells.length; i++) 
+		cells[i].distace = distanceCalculation(cellFound.lat,cellFound.lon,cells[i].lat,cells[i].lon);
+	console.log(cells);
+
+	//сортируем массив cells по дистанции от мин к мах
+	function compareNumeric(a, b) {
+		if (a > b) return 1;
+		if (a < b) return -1;
+	}
+
+	//создание массива для RSI с учетом кратности 10.
+
+	var rsiCurrentList = [];
+	for (var i = 0; i < cells.length; i++) {
+		rsiCurrentList.push(rsiRoundDown(cells[i].rsi)); rsiCurrentList.push(rsiRoundUp(cells[i].rsi))
+	}
+	//удаление из массива повторяющихся елементов
+	function unique(arr) {
+		var result = [];
+		nextInput:
+		for (var i = 0; i < arr.length; i++) {
+		var str = arr[i]; // для каждого элемента
+		for (var j = 0; j < result.length; j++) { // ищем, был ли он уже?
+		if (result[j] == str) continue nextInput; // если да, то следующий
+		}
+		result.push(str);
+	    }
+  	return result;
+	}
+
+	var uniqueRsiCurrentList = unique(rsiCurrentList);
+
+
+	var rsiArray = [0,10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200,210,220,230,240,250,260,270,280,290,300,310,320,330,340,350,360,370,380,390,400,410,420,430,440,450,460,470,480,490,500,510,520,530,540,550,560,570,580,590,600,610,620,630,640,650,660,670,680,690,700,710,720,730,740,750,760,770,780,790,800,810,820,830];
+	
+		function rsiRoundUp (rsi) {
+			return Math.ceil(rsi/10)*10;
+		}
+	
+		function rsiRoundDown (rsi) {
+			return Math.floor(rsi/10)*10;
+		}
+
+		function distanceCalculation (lat1,lon1,lat2,lon2) {
+		var d = Math.atan(Math.sqrt(Math.pow((Math.cos(Math.PI*lat2/180)*Math.sin(Math.PI*lon2/180-Math.PI*lon1/180)),2) + Math.pow((Math.cos(Math.PI*lat1/180)*Math.sin(Math.PI*lat2/180)-Math.sin(Math.PI*lat1/180)*Math.cos(Math.PI*lat2/180)*Math.cos(Math.abs(Math.PI*lon2/180-Math.PI*lon1/180))),2)) /(Math.sin(Math.PI*lat1/180)*Math.sin(Math.PI*lat2/180)+Math.cos(Math.PI*lat1/180)*Math.cos(Math.PI*lat2/180)*Math.cos(Math.abs(Math.PI*lon2/180-Math.PI*lon1/180))))*6372795;
+		return d;
+		}
+
+	for (var i = 0; i < uniqueRsiCurrentList.length; i++) {
+		for (var j = 0; j < rsiArray.length; j++) { 
+			if (uniqueRsiCurrentList[i] == rsiArray[j] && rsiArray.length > 3) { 
+				rsiArray.splice (j,1);
+				} 
+			}
+		}
+
+console.log("You can use rsi: "+ rsiArray);
+
+</script>
