@@ -1,0 +1,115 @@
+<!-- <meta charset="utf-8">
+<script type="text/javascript">
+
+var passengers = [ {name: "1" , paid: true, ticket: "coach"},
+					{name: "2" , paid: true, ticket: "firstclass"},
+					{name: "3" , paid: false, ticket: "coach"},
+					{name: "Dr. Evel" , paid: true, ticket: "coach"}] ;
+
+
+function checkNoFlyList (passenger) {
+return (passenger.name === "Dr. Evel");
+}
+
+function checkNotPaid (passenger) {
+	return (!passenger.paid);
+}
+
+function processPassengers (passengers, testFunction) {
+	for (var i = 0; i < passengers.length; i++) {
+		if (testFunction(passengers[i])) {
+			return false;
+		}
+	}
+	return true;
+}
+
+function serveCreateDrinkOrder (passenger) {
+	if (passenger.ticker == "firstclass") {
+		alert ("would ou like cocktail or wine?");
+	} else {
+		alert ("Would you like cola or water?");
+	}
+}
+
+function serveCreateDrinkOrder (passenger) {
+	var orderFunction;
+
+	if (passenger.ticker == "firstclass") {
+		order.function = function () {
+			alert ("would ou like cocktail or wine?");
+		};
+	} else {
+		order.function = function () {
+		alert ("Would you like cola or water?");
+	};
+	}
+	return orderFunction;
+}
+
+function serveCustomer (passenger) {
+	serveCreateDrinkOrder(passenger);
+}
+
+function printPassenger (passenger) {
+	console.log ( "Name: " + passenger.name + " paid status: " + passenger.paid);
+}
+
+var allCanFly = processPassengers(passengers,checkNoFlyList);
+if(!allCanFly) {
+	console.log ("the plane can't take off: we have passenger on the no-fly-list");
+}
+
+var allPaid = processPassengers(passengers,checkNotPaid);
+if (!allPaid) {
+	console.log ("The plane can't take off: not everyone has paid");
+}
+
+var passengersList = processPassengers (passengers, printPassenger);
+
+</script> -->
+
+<meta charset="utf-8">
+<script type="text/javascript">
+	var cells = [	{name: "1", lat:55.1923, lon: 37.02, rsi: 10, distace: 10},
+					{name: "2", lat:55.1924, lon: 37.03, rsi: 10, distace: 20},
+					{name: "3", lat:55.1925, lon: 37.04, rsi: 10, distace: 30},
+					{name: "4", lat:55.1926, lon: 37.05, rsi: 23, distace: 40},
+					{name: "5", lat:55.1927, lon: 37.06, rsi: 50, distace: 50},
+					{name: "4", lat:55.1926, lon: 37.05, rsi: 61, distace: 60},
+					{name: "4", lat:55.1926, lon: 37.05, rsi: 20, distace: 70}
+/*					{name: "4", lat:55.1926, lon: 37.05, rsi: 59, distace: 80},
+					{name: "4", lat:55.1926, lon: 37.05, rsi: 34, distace: 90},
+					{name: "4", lat:55.1926, lon: 37.05, rsi: 56, distace: 200},
+					{name: "4", lat:55.1926, lon: 37.05, rsi: 23, distace: 404},
+					{name: "4", lat:55.1926, lon: 37.05, rsi: 45, distace: 23},
+					{name: "4", lat:55.1926, lon: 37.05, rsi: 130, distace: 123},
+					{name: "4", lat:55.1926, lon: 37.05, rsi: 99, distace: 40}*/
+					];
+	for (var i = 0; i < cells.length-1; i++) {
+		for ( var j = cells.length; j < i; j--) {
+			if (cells[i].rsi == cells[j].rsi)  {
+				cells.splice(j,1);
+			}
+		}
+	}
+
+	console.log (cells);
+	var cellFound = {name: "6", lat:55.1928, lon: 37.07, rsi: 0};
+	var rsiArray = [0,10,20,30,60,70,80/*,90,100,110,120,130,140*/];
+	function rsiRoundUp (rsi) {
+		return Math.ceil(rsi/10)*10;
+	}
+	function rsiRoundDown (rsi) {
+		return Math.floor(rsi/10)*10;
+	}
+
+	for (var i = 0; i < cells.length; i++) {
+		for (var j = 0; j < rsiArray.length; j++) { /*console.log(rsiArray[j]);*/
+			if ((rsiRoundUp(cells[i].rsi) == rsiArray[j] || rsiRoundDown(cells[i].rsi) == rsiArray[j]) && rsiArray.length > 3) { 
+				rsiArray.splice (j,1); /*console.log (rsiArray);*/
+				} 
+			}
+		}
+console.log("You can use rsi: "+ rsiArray);
+</script>

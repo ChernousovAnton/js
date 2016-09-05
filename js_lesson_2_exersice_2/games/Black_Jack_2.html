@@ -1,0 +1,82 @@
+<meta charset="utf-8">
+<script type="text/javascript">
+
+function GetRandomNum (min , max) {
+	return Math.floor(Math.random() * (max - min + 1)) + min;
+}	
+
+function GetCard() {
+	var cards = [ '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
+	return cards [GetRandomNum(0, cards.length - 1)];
+}
+
+function getSum (arr) {
+	var sum = 0;
+	// Вычисляем сумму без учета туз(ов)
+	for (var i = 0; i < arr.length; i++) {
+		if (arr[i] != 'A') { 
+		if (arr[i] == 'J' || arr[i] == 'Q' || arr[i] == 'K') {
+			sum = sum + 10;
+		} else {sum = sum + parseInt(arr[i]);}
+		}
+		
+	}
+	// Если сумма стало больше чем 10, то туз =1 в противном случае 11
+	for (var i = 0; i < arr.length; i++)  {
+		if (arr[i] =='A') { 
+			if (sum > 10 ) {
+				sum = sum +1;
+			} else {
+				sum = sum + 11;
+			}
+		} 
+	}
+	return sum
+}
+
+function getStatus () {
+return 'Дилер: ' + diler.join(' ') + ' Игрок: ' + player.join (' ');
+}
+
+var diler = [GetCard()];
+var player = [GetCard(),GetCard()] //[GetCard(),GetCard()];
+
+var answer='';
+
+if (getSum(player) == 21){
+	alert ("Black Jack :P " + getStatus());
+} else	{
+		do {
+			answer = prompt(getStatus() + ' Хотите еще карту? - нажмите 1. Иначе нет.');
+			if ( answer == '1' ) {
+			player.push(GetCard());
+				if (getSum(player)>21) {
+					alert('Перебор T_T ');break;
+				} else if (getSum(player) == 21) {
+					alert ("Black Jack :P "); break;
+				}
+			} else {
+				// иогрок отказался брать карты - теперь добирает дилер пока не будет 17 и более
+				while (getSum(diler) < 17 ) {
+						diler.push(GetCard());}
+					
+						sumPlayer = getSum(player);
+						sumDiler = getSum(diler);
+
+						if (sumDiler == 21) {
+							alert ('У дилера Black Jack ' + getStatus());
+						} else if ( sumDiler == sumPlayer) {
+							alert ( ' Ничья ' + getStatus() );
+						} else if ( sumDiler > 21 ){
+							alert ( ' Выигрыш ' + getStatus() );
+						} else  {
+							alert ( ' Проигрыш ' + getStatus() );
+						}
+				}
+			//alert(getStatus());
+		} while (answer == '1' );
+} 
+			
+
+
+</script>
